@@ -7,13 +7,8 @@ struct Where{
 	}
 };
 
-
 int main(){
 	Where w;
 	cout << &w << endl;
 	w.am_I();
 }
-
-
-
-
