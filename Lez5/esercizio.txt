@@ -1,0 +1,5 @@
+// 1) una classe Complex con get/set sia in coordinate cartesiane che polari.
+// 2) funzioni somma (che gestisca anche la somma coi reali), prodotto, inverso
+// 3) discretizzazione di (-2,2)^2: immagine dei punti di un reticolo quadrato sotto la mappa z->z/(z-3)^2. Stessa cosa con il cerchio unitario e la mappa 
+// z->1/(2z-3). Plottateli con gnuplot: plot 'file.dat'
+
