@@ -8,11 +8,13 @@ using namespace std;
 
 class Complex {
 	private:
-		double _re, _im;
-		double _mod, _theta;
+		double _re, _im, _mod, _theta;
 	public:
 		Complex(double re = 0, double im = 0){ //Costruttore di default
-			_re = re, _im= im;
+		        _re = re; 
+		        _im= im;
+			_mod = pow(re*re+im*im,0.5);
+			_theta=atan(im/re);
 			cout << "Costruttore di default" << endl;
 		};
 		
@@ -29,6 +31,8 @@ class Complex {
 
 		void set(double re =0, double im=0){
 			_re = re; _im=im;
+			_mod = pow(re*_re+_im*_im,0.5);
+			_theta = atan(im/re);
 		}
 
 		double get_re(){
@@ -37,17 +41,22 @@ class Complex {
 		double get_im(){
 			return _im;
 		}
+		double get_mod(){
+			return _mod;
+		}
+		double get_theta(){
+			return _theta;
+		}
 
 		double print_cart(){
 			cout << _re << "+i*" << _im << endl;
 		}
 
 		double print_ex(){
-			double mod = pow(_re*_re + _im*_im,0.5);
-			double theta = atan(_im/_re);
-			cout << "(" << mod << ")" << "e^(i*" << theta << ")" << endl;  
+			cout << "(" << _mod << ")" << "e^(i*" << _theta << ")" << endl;  
 		}
 		
+			
 
 		//Operatori abbastanza scemi
 		Complex operator+(const Complex &s) const {
@@ -73,12 +82,26 @@ class Complex {
 		
 			return *this; //ok funza
 		}
+		
+		Complex operator*(const Complex &dx) const {
+			return Complex( _re * dx._re - _im*dx._im,  _re*dx._im + _im*dx._re);
+		}
+
+		Complex operator*(double &d) const {
+			return Complex(_re*d, _im*d);
+		}
+
+
+		Complex inverso() const {
+			return Complex(_re/(_re*_re+_im*_im), -_im/(_re*_re+_im*_im)); 
+		}
 
 		//Booleani di uguaglianza
 		//
 		bool operator==(const Complex &dx){
 			return _re==dx._re && _im==dx._im;
 		}
+
 };
 #endif
 
