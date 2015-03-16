@@ -53,8 +53,10 @@ x+y+z /. Plus -> Times (*Sostituisci a Plus, Times, e poi valutala --- esempio d
 
 
 
+N[1/7,32] (*-> output con 32 cifre significative*)
 
 
+Log[-1] (*-> Fornisce il taglio del logaritmo*)
 
 
 
