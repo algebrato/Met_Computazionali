@@ -15,4 +15,19 @@ Plot[{Sqrt[1-x^2], -Sqrt[1-x^2]}, {x,-1,1}, AspectRatio->1] (*Oppure posso param
 ParametricPlot[ {Cos[t], Sin[t]} , {t,0, 2 Pi} ]
 
 
-ParametricPlot3D[{}] (*Parametrizzare la sp*)
+(*ParametricPlot3D[{}] (*Parametrizzare la sp*)*)
+
+(*Matrici di Grafici*)
+GraphicsGrid[{ {gra1, gra2} } ] (*O GraphicsArray --- 1 riga con due grafici*)
+GraphicsGrid[{gra1}, {gra2}]     (*una colonna con due grafici*)
+
+(*Per esportare i grapfici*)
+Export["grafico1.jpg", gra1, "JPEG"]  
+
+
+
+
+
+
+
+
