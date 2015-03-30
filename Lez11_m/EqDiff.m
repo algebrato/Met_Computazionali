@@ -15,3 +15,8 @@ f[beta_, omega_] := If[ beta === 2 omega, g[omega], g[beta,omega]] (*Non funzion
 
 
 
+gra4 = Plot[ Evaluate[ {f[0,1], f[0.5,1], f[2,1]}], {x,0,2 Pi}]; (*Meglio aggiungere un evaluate in più in modo da non aver problemi con la definizione delle funzioni col :=*)
+
+
+
+
