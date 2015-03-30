@@ -1,0 +1,14 @@
+//- Scrivere una interfaccia  (classe con  almeno una funzione virtual pura)
+//Shape con una funzione print.
+//- scrivere circle e square che ereditino da shape
+//- Fare un piccolo array di puntatori a shape ma di oggetti circle e square in
+//modo random
+//- testare il polimorfismo, chiamare per ognuno dei 5 puntatori la loro
+//funzione print.
+
+/////////////
+
+// pensare di dare all'utente la possibilità di clonare un oggetto della mia
+// classe. Voglio creare delle copie di oggetti che rispettino il loro tipo
+// dinamico. Tutti gli oggetti di tipo shape possono essere clonati
+// rispettando però il loro tipo
