@@ -50,6 +50,7 @@ public:
        }
    };
     explicit BinarySeq(const BinarySeq &bs) : seqb_(bs.seqb_){};
+
     BinarySeq(std::vector<int> seqnew) : seqb_(seqnew){};
     void print(){
        cout << "Print della sequenza binaria:" << endl;
@@ -61,12 +62,10 @@ public:
    }
 };
 
-
-
-
-/*BinarySeq Not(const BinarySeq &bs) {
+void Not( Sequence * bs) {
     std::vector<int> vettorenot;
-    std::vector<int> seqiniz(bs.get_bin_vector());
+    std::vector<int> seqiniz =bs->get_bin_vector();
+
     for(std::vector<int>::iterator it=seqiniz.begin() ; it != seqiniz.end(); ++it){
         if(*it = 1){
             vettorenot.push_back(0);
@@ -75,9 +74,9 @@ public:
         }
 
     }
-    return BinarySeq(vettorenot);
+    //return  new Sequence(vettorenot);
 };
-*/
+
 
 
 

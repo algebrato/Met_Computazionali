@@ -15,11 +15,8 @@ class Bici : public Veicolo {
 };
 
 
-
 int main() {
 	Bici b;
 	
-
-
 }
 
