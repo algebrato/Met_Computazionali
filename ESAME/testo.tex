@@ -1,0 +1,303 @@
+
+
+
+
+
+
+
+
+\documentclass[12pt,italian]{article}
+
+%\usepackage[T1]{fontenc}
+%\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\usepackage{babel}
+
+\usepackage{graphicx}
+
+
+\usepackage[a4paper, total={15cm, 21.5cm}]{geometry}
+
+
+
+\usepackage{color}
+\usepackage{listings}
+\lstset{language=C++,
+                basicstyle=\footnotesize\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{green}\ttfamily,
+                commentstyle=\color{red}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+                }
+
+
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\setlength{\textwidth}{17cm}
+\setlength{\oddsidemargin}{-0.5cm}
+\setlength{\evensidemargin}{-0.5cm}
+
+
+\begin{document}
+
+
+
+
+
+
+
+\begin{center}
+{\Large\bf Esame di Laboratorio di Fisica Computazionale }\\
+{\bf 23 aprile 2015, ore 9.30}
+
+\vskip1truecm
+
+{\large\bf shell scripting}
+\end{center}
+
+\begin{enumerate}
+\item
+Si generi un nuovo file a partire da quello allegato {\tt spese.txt}.
+Nel nuovo file si aggiunga una colonna che contenga la somma dei valori riportati 
+nelle altre colonne di ciascuna riga.
+\item
+Successivamente i calcoli la somma delle tre colonne e la si aggiunga in fondo.
+
+\end{enumerate}
+
+\clearpage
+
+
+\begin{center}
+{\large\bf Mathematica}
+\end{center}
+
+\begin{enumerate}
+
+\item
+Si risolva il sistema di equazioni
+$$
+\left\{
+\begin{array}{rl}
+z&=x^2+y^2\\
+z&=-(x^2+y^2)^{\frac32}+30\\
+z&=-40x-40y
+\end{array}
+\right.
+$$
+e si disegnino le 3 superfici associate alle 3 equazioni, con $x\in[-3,3]$ e $y\in[-3,3]$.
+
+
+\item
+Si definisca una funzione associata alla soluzione numerica,
+nell'intervallo $t\in [0,10]$,
+dell'equazione differenziale
+\be
+y'(t)= a \left(1-y(t)\right) y(t) + b\, .
+\ee
+Questa funzione dipende dai parametri $a, b$ e dalla costante $k$
+che determina la condizione al condizione al contorno $y(0)=k$.
+
+Si generi un grafico tridimensionale,
+facendo variare $t\in [0,10]$ e $a\in [0.5,1.5]$, avendo fissato $k=b=1.5$.
+
+Si generi un secondo grafico tridimensionale,
+facendo variare $t\in [0,10]$ e $b\in[0.1,10]$, avendo fissato $a=k=1.5$.
+
+Si generi un terzo grafico tridimensionale,
+facendo variare $t\in [0,10]$ e $k\in[0.5,1.5]$, avendo fissato $a=b=1.5$.
+
+
+
+
+
+
+
+
+\item
+Si generino 100000 valori casuali $x_i$ compresi tra -5 e 5.
+Per ciascun valore $x_i$, si estragga un secondo valore casuale $y_i$ compreso tra 0 e 1.
+Si valuti la disuguaglianza $y_i<\exp(-x_i^2)$ e si salvi la coppia $(x_i,y_i)$ solo se la disuguaglianza \`e soddisfatta. 
+Si proceda quindi a disegnare l'insieme dei punti selezionati, utilizzando {\tt ListPlot}.
+Si confronti la frazione di punti selezionati rispetto a quelli generati
+con il risultato del rapporto di integrali 
+$$
+\frac{\int_{-5}^5 dx \exp(-x^2)}{\int_{-5}^5 dx \,1}
+$$
+{\it suggerimento: si consideri eventualmente l'utilizzo di {\tt DeleteCases}}
+
+\item
+Si generi una matrice 1000x1000 di numeri casuali compresi tra 0 e 1.
+Si calcolino gli autovalori di questa matrice.
+Si trasformi ciascun autovalore $z$ nella coppia $\{Re[z],Im[z]\}$.
+Si utilizzi {\tt ListPlot} per disegnare gli autovalori, nel piano complesso $z$.
+
+\item
+La soluzione del problema del punto 2,
+assegnando ai parametri i valori $a=b=0.5$, 
+pu\`o essere affrontato con la tecnica di Runge-Kutta.
+Posto $(x_0=0, y_0=0.5)$ e fissato un intervallo $h=0.01$, 
+si calcoli una successione di 1000 coppie di punti $(x_n,y_n)$
+in cui $x_n=x_0+ n\, h$
+e in cui il valore di $y$ \`e ottenuto secondo il seguente algoritmo.
+Data $f(x_n,y_n)=0.5 \left(1-y_n\right) y_n + 0.5$
+\bea
+k_1 &=& h f(x_n,y_n)\nonumber\\
+k_2 &=& h f(x_n+h/2,y_n+k_1/2)\nonumber\\
+k_3 &=& h f(x_n+h/2,y_n+k_2/2)\nonumber\\
+k_4 &=& h f(x_n+h,y_n+k_3)\nonumber\\
+y_{n+1} &=& y_n + \frac{k_1}{6} + \frac{k_2}{3} + \frac{k_3}{3}+ \frac{k_4}{6}
+\eea
+Si visualizzi la successione delle coppie di punti
+e si confronti questo grafico con quello corrispondente ottenuto utilizzando la soluzione del punto 2.
+
+
+
+\item
+Il comando {\tt Distribute} permette di implementare la propriet\`a distributiva rispetto all'addizione 
+di funzioni generiche (p.es. {\tt Distribute}[h[a+b,c]] = h[a,c]+h[b,c]).
+\begin{enumerate}
+\item
+Dati due operatori $A$ e $B$ che non commutano, si sfrutti questo comando per generare in forma espansa tutti i termini fino al secondo ordine del prodotto di operatori $\exp(A) \exp(B)$.
+({\it suggerimento: si utilizzi una funzione {\rm h} di due sole variabili per mantenere l'ordine tra A e B.})
+\item
+Si consideri ora lo sviluppo al secondo ordine della formula di Baker-Campbell-Hausdorf $C=A+B+\frac12 [A,B]$.
+Si scrivano, a mano, {\bf formalmente}, i primi tre termini dello sviluppo (fino al secondo ordine)
+di $\exp(C)$, sempre sfruttando la funzione $h$ per mantenere l'ordinamento.
+Con {\tt Distribute} si espanda anche questo risultato (pu\`o servire in questo caso il simbolo $:>$ al posto di $->$ per indicare la regola di sostituzione).
+\item
+Si implementino delle definizioni (oppure si applichino delle sostituzioni) per semplificare le espressioni
+\item
+Si sottraggano le espressioni dei punti (a) e (b), mostrando che i termini rimanenti sono di ordine superiore.
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+
+\clearpage
+
+
+\begin{center}
+{\large\bf C++}
+\end{center}
+
+
+Si risolva l'esercizio proposto.
+Per facilitare la correzione, se possibile includere tutto in un unico file sorgente.
+La sufficienza \`e raggiunta risolvendo correttamente
+i primi quattro punti.
+
+
+
+\section*{Esercizio}
+
+Si vuole abbozzare un piccolo framework per descrivere i rimbalzi in un flipper
+(tra palline e \emph{bumpers}).
+
+\begin{enumerate}
+
+\item
+Si scriva una classe {\tt Ball} che rappresenter\`a una palla.
+Tra i membri \emph{private} si mettano le due componenti del vettore velocit\`a 
+e la massa (si usino variabili {\tt double}: per semplicit\`a trascureremo le unit\`a di misura).
+Tra i membri \emph{public} si scriva un costruttore
+che richieda come parametri massa e componenti della velocit\`a,
+con valori di default tutti e tre uguali a 1.
+
+
+\item
+Si scrivano due funzioni (membri di {\tt Ball}): 
+una funzione {\tt energy}
+che restituisca il valore dell'energia cinetica,
+e una funzione {\tt print}
+che stampi su {\tt cout} le componenti della velocit\`a
+e l'energia cinetica (usando {\tt energy}).
+
+\item
+Si scriva una funzione {\tt change\_speed} (anch'essa membro)
+che prenda come parametro
+un numero reale $\lambda$ e riscali di un fattore $\lambda$ il modulo della velocit\`a, 
+mantenendone invariata la direzione.
+
+\item
+Nel {\tt main} si istanzi un oggetto di tipo {\tt Ball} di massa 1 e velocit\`a $(1,1)$,
+se ne stampino componenti ed energia cinetica,
+e si verifichi che se si raddoppia la velocit\`a con {\tt change\_speed}
+l'energia quadruplica.
+
+\item
+Si scriva poi una classe {\tt Bumper} che rappresenter\`a
+i respingenti, cio\`e bersagli su cui la palla pu\`o rimbalzare.
+Nell'urto, la palla inverte il verso del suo moto e aumenta la sua
+energia cinetica di un fattore $\mu$ (cio\`e $E\mapsto \mu E$).
+Si ponga $\mu$ come membro \emph{private} e si scriva
+un opportuno costruttore che prenda un parametro e inizializzi $\mu$.
+
+\item
+Tra i membri \emph{public} di {\tt Bumper} si scriva una funzione
+{\tt bounce}, che prenda come parametro una palla e le faccia compiere
+l'urto descritto al punto precedente.
+Tale funzione dovr\`a essere dichiarata \emph{virtuale}
+per risolvere i punti successivi.
+[Si valuti se passare la palla per copia o per referenza.]
+
+\item
+Si scriva una classe {\tt ThresholdBumper}, che erediti pubblicamente
+da {\tt Bumper}. L'urto con questo particolare respingente ha il comportamento
+usuale (con $\mu=1.5$ fissato) se l'energia cinetica supera una soglia $\epsilon$, altrimenti \`e
+un urto elastico (conserva l'energia). 
+Si ponga $\epsilon$ tra i membri \emph{private}
+e si scriva un opportuno costruttore che prenda come parametro la soglia e
+inizializzi sia $\epsilon$ che il parametro $\mu$ della classe base.
+
+\item
+Si scriva la funzione {\tt bounce} (\emph{override} di quella ereditata da {\tt Bumper}) in modo che esegua
+l'urto con il controllo sulla soglia descritto al punto precedente.
+(Si riutilizzi il codice gi\`a scritto per la funzione della classe base.)
+
+\item
+Si scriva una funzione globale {\tt flipper} che prenda due parametri:
+una referenza a {\tt Ball}
+e un {\tt std::vector} di respingenti.
+Sapendo che l'obiettivo \`e quello di realizzare un comportamento polimorfico,
+si consideri se usare un vettore di referenze, di puntatori, oppure di copie.
+L'effetto di {\tt flipper} deve essere quello di far eseguire alla palla
+i rimbalzi con tutti i respingenti nel vettore (in ordine).
+
+\item
+Nel {\tt main}, istanziare due {\tt std::vector}
+(di referenze, puntatori o copie, vedi punto precedente).
+Riempire il primo con oggetti di tipo {\tt Bumper} allocati \emph{dinamicamente}
+con parametri $\mu$ lanciati a caso tra 1 e 2.
+Riempire il secondo con oggetti di tipo {\tt ThresholdBumper} (anch'essi dinamici),
+con parametri $\epsilon$ lanciati a caso tra 0 e 5.
+Per ognuno dei vettori, eseguire il flipper a partire da una palla
+inizializzata coi valori di default,
+poi stampare lo stato finale della palla.
+
+[Per generare numeri reali pseudo-random tra 0 e 1 si pu\`o usare {\tt drand48()}.]
+
+[Ricordarsi di chiamare {\tt delete} su ogni oggetto creato con {\tt new}.]
+
+\item
+Verificare che lo stato finale della palla dopo il flipper con i {\tt Bumper}
+non cambia se si inverte l'ordinamento dei respingenti, mentre lo fa
+con i {\tt ThresholdBumper}.
+
+
+
+
+\end{enumerate}
+
+
+\end{document}
+
