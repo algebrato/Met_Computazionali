@@ -1,0 +1,286 @@
+
+
+
+
+
+
+
+
+\documentclass[12pt,italian]{article}
+
+%\usepackage[T1]{fontenc}
+%\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\usepackage{babel}
+
+\usepackage{graphicx}
+
+
+\usepackage[a4paper, total={15cm, 21.5cm}]{geometry}
+
+
+
+\usepackage{color}
+\usepackage{listings}
+\lstset{language=C++,
+                basicstyle=\footnotesize\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{green}\ttfamily,
+                commentstyle=\color{red}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+                }
+
+
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\setlength{\textwidth}{17cm}
+\setlength{\oddsidemargin}{-0.5cm}
+\setlength{\evensidemargin}{-0.5cm}
+
+
+\begin{document}
+
+
+
+
+
+
+
+\begin{center}
+{\Large\bf Esame di Laboratorio di Fisica Computazionale }\\
+{\bf 6 maggio 2014, ore 10.00}
+
+\vskip1truecm
+
+{\large\bf shell scripting}
+\end{center}
+
+\begin{enumerate}
+\item
+Si utilizzi {\tt sed} per modificare il file {\tt modello.txt}\\
+1) cancellando le prime tre righe che contengono degli asterischi,\\
+2) sostituendo le scritte generiche {\tt cognome} e {\tt nome}
+con il vostro nome e cognome.
+Si salvi il risultato in un nuovo file.
+\end{enumerate}
+
+\clearpage
+
+
+\begin{center}
+{\large\bf Mathematica}
+\end{center}
+
+\begin{enumerate}
+
+
+\item
+Si risolva, rispetto alle variabili $(y,z)$, il seguente sistema di equazioni:
+\bea
+&&x^2+y^2-z=1\nonumber\\
+&&z-2 x^2-2 y^2=4
+\label{eq:sistema}
+\eea
+
+\item
+Si disegnino, nello stesso grafico, le due superfici definite dalle due equazioni (\ref{eq:sistema}).
+
+
+\item
+Si risolva la seguente equazione differenziale, parametrica in $\lambda$:
+\bea
+&&y'(x) + y(x) = e^{-\lambda x} + 3 \sin x\\
+&&y(1)=2\nonumber
+\label{eq:diff}
+\eea
+
+\item
+Si disegni in un grafico tridimensionale la soluzione dell'equazione (\ref{eq:diff})
+nell'intervallo $x\in [-2,2]$ e con $\lambda\in [-0.5,0.5]$
+
+\item
+Si definisca una funzione che esprime il tensore d'inerzia per una particella puntiforme di massa $m$ e di coordinate $X=(x,y,z)$
+\be
+I= m
+\left( 
+\begin{tabular}{ccc}
+$y^2+z^2$ & $-x y$    & $-x z$ \\
+$-x y$    & $x^2+z^2$ & $-y z$ \\
+$-x z$    & $-y z$    & $x^2+y^2$
+\end{tabular}  
+\right)
+\ee
+
+\item
+Si consideri un sistema di tre particelle puntiformi con le seguenti masse e coordinate:
+\bea
+m_1 &=& 1,\quad\quad X_1=(4,1,3)\nonumber\\
+m_2 &=& 2,\quad\quad X_2=(-1,-1,1)\nonumber\\
+m_3 &=& 4,\quad\quad X_3=(1,0,-2)
+\eea
+e si definisca il tensore d'inerzia totale $I=\sum_{j=1}^3 I_j$.
+Si calcolino autovalori $a_i$ e autovettori $\vec v_i$ (con $i=1,2,3$) della matrice $I$.
+
+\item
+Si verifichi che la matrice degli autovettori diagonalizza la matrice $I$.
+
+
+\item
+Si consideri l'ellissoide d'inerzia, ovvero la superficie definita dall'equazione
+\be
+1 = \frac{a_1}{a_{sum}} \rho_x^2 +
+    \frac{a_2}{a_{sum}} \rho_y^2 +
+    \frac{a_3}{a_{sum}} \rho_z^2 
+\ee
+dove $a_{sum}=\sum_{j=1}^3 a_j$, con $a_j$ gli autovalori del tensore di inerzia, e dove $\rho_i$ sono delle coordinate cartesiane lungo gli assi principali d'inerzia.\\
+Si disegni l'ellissoide nel caso del tensore $I$,
+tenendo conto del fatto che i tre assi principali $\vec v_j$ sono ortogonali tra di loro, ma non coincidono con gli assi cartesiani.\\
+{\bf LEGGERE il seguente suggerimento:}\\
+{\it Come parametrizzazione per il punto nella base $(x,y,z)$ si utilizzi quella seguente:\\
+$ (\frac{a_{sum}}{a_1} \sin\theta\cos\phi ,\frac{a_{sum}}{a_2} \sin\theta\sin\phi,
+\frac{a_{sum}}{a_3} \cos\theta ) $\\
+Per visualizzare l'ellissoide ruotato,
+si prenda il primo autovettore (primo asse principale) e si calcolino l'angolo $\theta_1$  che esso forma con l'asse cartesiano $z$ e l'angolo $\phi_1$ che la sua proiezione sul piano $(x,y)$ forma con l'asse $x$; si scrivano quindi le due rotazioni necessarie per ruotare l'asse $z$ nel primo asse principale.\\
+Come visto a lezione, per determinare il valore di ciascun punto si possono dare pi\`u istruzioni all'interno del comando {\tt ParametricPlot3D}; si proceda quindi a ruotare ciascun punto, scritto nella base $(x,y,z)$, utilizzando le due matrici di rotazione determinate prima.
+ }
+
+
+\item
+Si consideri la seguente mappa (mappa logistica):
+\be
+x_{n+1}= r x_n (1-x_n)
+\label{eq:logistica}
+\ee
+e si ponga come condizione iniziale $x_0=0.8$.\\
+Si scriva una funzione che genera, per $r$ assegnato, i primi 1000 valori della serie.\\
+Utilizzando il comando {\tt Take}, si estraggano gli ultimi 32 elementi della lista precedente; con {\tt Union} ci si riduca agli elementi distinti tra questi 32.\\
+Con {\tt Map} si generi la lista delle coppie $\{r,y\}$ dove $y$ \`e uno degli elementi ottenuti nel punto precedente.\\
+Si effettui una scansione in $r\in [2.4,3.8]$ con passo pari a 0.01, e si generi la lista delle liste di coppie del punto precedente; utilizzando il comando {\tt Flatten[lista,1] } ci si riduca a una sola lista di tutte le coppie $\{r,y\}$,  che pu\`o infine essere visualizzata con {\tt ListPlot}.
+
+
+\end{enumerate}
+
+
+\clearpage
+
+
+\begin{center}
+{\large\bf C++}
+\end{center}
+
+Si risolva l'esercizio proposto.
+Per facilitare la correzione, se possibile includere tutto in un unico file sorgente.
+La sufficienza \`e raggiunta risolvendo correttamente
+i primi tre punti.
+
+
+
+\section*{Esercizio}
+
+\begin{enumerate}
+
+\item
+Si scriva una classe {\tt Matrix} che rappresenti una matrice 2x2.
+Tra i membri \emph{privati} si pongano le quattro componenti (reali);
+tra i membri \emph{pubblici} si scriva un opportuno costruttore
+che richieda gli elementi di matrice, con \emph{valori di default}
+impostati in modo da realizzare la matrice identit\`a.
+
+\item
+%Si scrivano il costruttore di copie e l'operatore di assegnazione.
+Si implementi l'operatore ``$*$'' (membro di {\tt Matrix}), che restituisce il prodotto riga per colonna.
+
+\item
+Si implementi una funzione membro {\tt Print},
+che stampi su \emph{standard output} la generica matrice
+nella forma
+{
+\tt
+\begin{tabular}{cc}
+a&b\\
+c&d
+\end{tabular}
+}
+
+\item
+Si scriva un {\tt main} che istanzi una matrice
+identit\`a ed una 
+{$m=
+\left(
+\begin{tabular}{cc}
+1&2\\
+3&4
+\end{tabular}
+\right)$
+}
+e si controlli, stampando i risultati su {\tt cout},
+che il prodotto a sinistra (come anche quello a destra) dell'identit\`a
+con $M$ sia uguale a $M$.
+
+\item
+Tra i membri pubblici, si scriva una funzione membro {\tt Det},
+che restituisca il determinante della matrice.
+
+\item
+Si scriva una classe {\tt RandomMatrix} che erediti pubblicamente
+da {\tt Matrix}.
+Il costruttore di default (senza parametri) dovr\`a generare una matrice \emph{simmetrica}
+con elementi random reali compresi tra 0 e 1.
+
+\item
+Si crei un {\tt std::vector} di \emph{puntatori} a {\tt Matrix},
+e lo si riempia con la matrice identit\`a, con la matrice
+{$\sigma_x=
+\left(
+\begin{tabular}{cc}
+0&1\\
+1&0
+\end{tabular}
+\right)$
+}
+e poi con 10 matrici simmetriche random
+(tutte allocate \emph{dinamicamente}; ricordarsi di
+liberare la memoria allocata, alla fine del programma;
+in alternativa usare degli \emph{smart pointer}, se si preferisce).
+
+%\item
+%Scrivere una funzione globale {\tt matrix\_compare},
+%che richieda due puntatori a {\tt Matrix} e restituisca un {\tt bool}
+%(tale funzione \`e detta \emph{predicato}), che prenda il valore
+%{\tt true} se il determinante della prima matrice
+%\`e minore di quello della seconda, e {\tt false} altrimenti.
+%
+%\item
+%Ordinare il vettore per determinanti crescenti, usando l'algoritmo
+%\begin{lstlisting}
+%std::sort(it1, it2, pred)
+%\end{lstlisting}
+%che ordina gli elementi compresi tra gli \emph{iteratori} {\tt it1} (compreso)
+%e {\tt it2} (escluso), confrontandoli attraverso il predicato {\tt pred}.
+%Infine controllare (stampandoli su {\tt cout}) che
+%il primo e l'ultimo elemento siano rispettivamente $\sigma_x$ e l'identit\`a.
+
+\item
+Si vuole ora ordinare il vettore per determinanti crescenti, usando l'algoritmo
+\begin{lstlisting}
+std::sort(it1, it2, pred)
+\end{lstlisting}
+che ordina gli elementi compresi tra gli \emph{iteratori} {\tt it1} (compreso)
+e {\tt it2} (escluso), confrontandoli attraverso il \emph{predicato} {\tt pred}
+(si ricorda che un predicato \`e una funzione che restituisce un {\tt bool}).
+Si scriva il predicato opportuno, si ordini il vettore, e si controlli infine
+(stampandoli su {\tt cout}) che
+il primo e l'ultimo elemento siano rispettivamente $\sigma_x$ e l'identit\`a.
+
+\end{enumerate}
+
+
+
+\end{document}
